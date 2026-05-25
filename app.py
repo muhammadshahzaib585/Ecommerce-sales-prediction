@@ -1,6 +1,19 @@
+from flask import Flask, jsonify
 import streamlit as st
 import pandas as pd
 import numpy as np
+
+# Top-level 'app' exported for Vercel Serverless Functions
+app = Flask(__name__)
+
+@app.route('/')
+def home():
+    return jsonify({
+        "status": "API is running", 
+        "message": "Welcome to Ecommerce Sales Prediction",
+        "note": "Streamlit UI cannot be directly rendered on Vercel Serverless Functions."
+    })
+
 import joblib
 import os
 import sys
